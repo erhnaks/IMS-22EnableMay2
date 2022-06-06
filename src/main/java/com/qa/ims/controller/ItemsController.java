@@ -38,7 +38,7 @@ public class ItemsController implements CrudController<Items> {
 		LOGGER.info("Please enter the product price: ");
 		float price = utils.getFloat();
 		Items items = itemsDAO.create(new Items(item_name, price));
-		LOGGER.info("Customer created");
+		LOGGER.info("Item has been created");
 		return items;
 
 	}// End of create items method
