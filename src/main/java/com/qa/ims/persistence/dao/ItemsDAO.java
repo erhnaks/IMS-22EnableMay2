@@ -79,20 +79,53 @@ public class ItemsDAO implements Dao<Items> {
 
 	@Override
 	public Items read(Long id) {
-		// TODO Auto-generated method stub
+
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				PreparedStatement statement = connection.prepareStatement("SELECT * FROM items WHERE item_id = ?");) {
+			statement.setLong(1, id);
+			try (ResultSet resultSet = statement.executeQuery();) {
+				resultSet.next();
+				return modelFromResultSet(resultSet);
+			}
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
 		return null;
-	}
+
+	} // End of Items read method
 
 	@Override
-	public Items update(Items t) {
-		// TODO Auto-generated method stub
+	public Items update(Items items) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				PreparedStatement statement = connection
+						.prepareStatement("UPDATE items SET item_name = ?, price = ? WHERE item_id = ?");) {
+			statement.setString(1, items.getItem_name());
+			statement.setFloat(2, items.getPrice());
+			statement.setLong(3, items.getItem_id());
+			statement.executeUpdate();
+			return read(items.getItem_id());
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
 		return null;
-	}
+
+	}// End of items Update method
 
 	@Override
 	public int delete(long id) {
-		// TODO Auto-generated method stub
+
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				PreparedStatement statement = connection.prepareStatement("DELETE FROM items WHERE item_id = ?");) {
+			statement.setLong(1, id);
+			return statement.executeUpdate();
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
 		return 0;
-	}
+
+	}// End of Items Delete method
 
 }
