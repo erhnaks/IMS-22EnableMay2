@@ -24,11 +24,11 @@ public class ItemController implements CrudController<Item> {
 
 	@Override
 	public List<Item> readAll() {
-		List<Item> allItem = ItemDAO.readAll();
-		for (Item Item : allItem) {
+		List<Item> items = ItemDAO.readAll();
+		for (Item Item : items) {
 			LOGGER.info(Item);
 		}
-		return allItem;
+		return items;
 	}// End of readAll method
 
 	@Override

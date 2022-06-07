@@ -32,7 +32,7 @@ public class ItemDAO implements Dao<Item> {
 	public List<Item> readAll() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM Item");) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM items");) {
 			List<Item> items = new ArrayList<>();
 			while (resultSet.next()) {
 				items.add(modelFromResultSet(resultSet));
@@ -50,7 +50,7 @@ public class ItemDAO implements Dao<Item> {
 
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM Item ORDER BY item_id DESC LIMIT 1");) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM items ORDER BY item_id DESC LIMIT 1");) {
 			resultSet.next();
 			return modelFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -65,7 +65,7 @@ public class ItemDAO implements Dao<Item> {
 
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
-						.prepareStatement("INSERT INTO item(item_name, price) VALUES (?, ?)");) {
+						.prepareStatement("INSERT INTO items(item_name, price) VALUES (?, ?)");) {
 			statement.setString(1, item.getItem_name());
 			statement.setFloat(2, item.getPrice());
 			statement.executeUpdate();
@@ -81,7 +81,7 @@ public class ItemDAO implements Dao<Item> {
 	public Item read(Long id) {
 
 		try (Connection connection = DBUtils.getInstance().getConnection();
-				PreparedStatement statement = connection.prepareStatement("SELECT * FROM Item WHERE item_id = ?");) {
+				PreparedStatement statement = connection.prepareStatement("SELECT * FROM items WHERE item_id = ?");) {
 			statement.setLong(1, id);
 			try (ResultSet resultSet = statement.executeQuery();) {
 				resultSet.next();
@@ -99,7 +99,7 @@ public class ItemDAO implements Dao<Item> {
 	public Item update(Item Item) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
-						.prepareStatement("UPDATE Item SET item_name = ?, price = ? WHERE item_id = ?");) {
+						.prepareStatement("UPDATE items SET item_name = ?, price = ? WHERE item_id = ?");) {
 			statement.setString(1, Item.getItem_name());
 			statement.setFloat(2, Item.getPrice());
 			statement.setLong(3, Item.getItem_id());
@@ -117,7 +117,7 @@ public class ItemDAO implements Dao<Item> {
 	public int delete(long id) {
 
 		try (Connection connection = DBUtils.getInstance().getConnection();
-				PreparedStatement statement = connection.prepareStatement("DELETE FROM Item WHERE item_id = ?");) {
+				PreparedStatement statement = connection.prepareStatement("DELETE FROM items WHERE item_id = ?");) {
 			statement.setLong(1, id);
 			return statement.executeUpdate();
 		} catch (Exception e) {
