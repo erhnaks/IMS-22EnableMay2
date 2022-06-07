@@ -2,20 +2,20 @@ package com.qa.ims.persistence.domain;
 
 import java.util.Objects;
 
-public class Items {
+public class Item {
 
 	private Long item_id;
 	private String item_name;
 	private float price;
 
-	public Items(String item_name, float price) {
+	public Item(String item_name, float price) {
 
 		this.setItem_name(item_name);
 		this.setPrice(price);
 
 	}
 
-	public Items(Long item_id, String item_name, float price) {
+	public Item(Long item_id, String item_name, float price) {
 
 		this.setItem_id(item_id);
 		this.setItem_name(item_name);
@@ -49,7 +49,7 @@ public class Items {
 
 	@Override
 	public String toString() {
-		return "Items [item_id=" + item_id + ", item_name=" + item_name + ", price=" + price + "]";
+		return "Item [item_id=" + item_id + ", item_name=" + item_name + ", price=" + price + "]";
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class Items {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Items other = (Items) obj;
+		Item other = (Item) obj;
 		return Objects.equals(item_id, other.item_id) && Objects.equals(item_name, other.item_name)
 				&& Float.floatToIntBits(price) == Float.floatToIntBits(other.price);
 	}

@@ -5,46 +5,46 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.qa.ims.persistence.dao.ItemsDAO;
-import com.qa.ims.persistence.domain.Items;
+import com.qa.ims.persistence.dao.ItemDAO;
+import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.utils.Utils;
 
-public class ItemsController implements CrudController<Items> {
+public class ItemController implements CrudController<Item> {
 
 	public static final Logger LOGGER = LogManager.getLogger();
 
-	private ItemsDAO itemsDAO;
+	private ItemDAO ItemDAO;
 	private Utils utils;
 
-	public ItemsController(ItemsDAO itemsDAO, Utils utils) {
+	public ItemController(ItemDAO ItemDAO, Utils utils) {
 		super();
-		this.itemsDAO = itemsDAO;
+		this.ItemDAO = ItemDAO;
 		this.utils = utils;
 	}
 
 	@Override
-	public List<Items> readAll() {
-		List<Items> allitems = itemsDAO.readAll();
-		for (Items items : allitems) {
-			LOGGER.info(items);
+	public List<Item> readAll() {
+		List<Item> allItem = ItemDAO.readAll();
+		for (Item Item : allItem) {
+			LOGGER.info(Item);
 		}
-		return allitems;
+		return allItem;
 	}// End of readAll method
 
 	@Override
-	public Items create() {
+	public Item create() {
 		LOGGER.info("Please enter your product name: ");
 		String item_name = utils.getString();
 		LOGGER.info("Please enter the product price: ");
 		float price = utils.getFloat();
-		Items items = itemsDAO.create(new Items(item_name, price));
+		Item Item = ItemDAO.create(new Item(item_name, price));
 		LOGGER.info("Item has been created");
-		return items;
+		return Item;
 
-	}// End of create items method
+	}// End of create Item method
 
 	@Override
-	public Items update() {
+	public Item update() {
 
 		LOGGER.info("Please enter the item_id of the item you would like to update");
 		Long id = utils.getLong();
@@ -52,18 +52,18 @@ public class ItemsController implements CrudController<Items> {
 		String item_Name = utils.getString();
 		LOGGER.info("Please enter a new price: ");
 		float price = utils.getFloat();
-		Items items = itemsDAO.update(new Items(id, item_Name, price));
+		Item Item = ItemDAO.update(new Item(id, item_Name, price));
 		LOGGER.info("Item has been Updated");
-		return items;
+		return Item;
 
-	}// End of items update Update method.
+	}// End of Item update Update method.
 
 	@Override
 	public int delete() {
 
 		LOGGER.info("Please enter the id of the item you would like to delete");
 		Long id = utils.getLong();
-		return itemsDAO.delete(id);
+		return ItemDAO.delete(id);
 
 	} // End of item delete method.
 
