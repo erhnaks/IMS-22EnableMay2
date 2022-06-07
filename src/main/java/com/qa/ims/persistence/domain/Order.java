@@ -2,58 +2,103 @@ package com.qa.ims.persistence.domain;
 
 import java.util.Objects;
 
-public class Order extends Customer {
+public class Order {
+
+	private Long id;
+	private Long customerId;
+	private Float totalPrice;
+	private Long itemId;
+	private Integer quantity;
+
+	public Order(Long id, Long customerId, Float totalPrice, Long itemId, Integer quantity) {
+		this.id = id;
+		this.customerId = customerId;
+		this.totalPrice = totalPrice;
+		this.itemId = itemId;
+		this.quantity = quantity;
+	}
+
+	public Order(Long customerId, Long itemId, Integer quantity) {
+		this.customerId = customerId;
+		this.itemId = itemId;
+		this.quantity = quantity;
+	}
+
+	public Order(Long id, Long customerId, Long itemId, Integer quantity) {
+		this.id = id;
+		this.customerId = customerId;
+		this.itemId = itemId;
+		this.quantity = quantity;
+	}
+
+	public Order(Long id) {
+		this.id =id;
+	}
 	
-	public Order(Long id, String firstName, String surname) {
-		super(id, firstName, surname);
-		// TODO Auto-generated constructor stub
+	
+	public Long getId() {
+		return id;
 	}
-	private Long order_id;
-	private Long customer_id;
-	private String customer_name;
-	public Long getOrder_id() {
-		return order_id;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
-	public void setOrder_id(Long order_id) {
-		this.order_id = order_id;
+
+	public Long getCustomerId() {
+		return customerId;
 	}
-	public Long getCustomer_id() {
-		return customer_id;
+
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
 	}
-	public void setCustomer_id(Long customer_id) {
-		this.customer_id = customer_id;
+
+	public Float getTotalPrice() {
+		return totalPrice;
 	}
-	public String getCustomer_name() {
-		return customer_name;
+
+	public void setTotalPrice(Float totalPrice) {
+		this.totalPrice = totalPrice;
 	}
-	public void setCustomer_name(String customer_name) {
-		this.customer_name = customer_name;
+
+	public Long getItemId() {
+		return itemId;
 	}
+
+	public void setItemId(Long itemId) {
+		this.itemId = itemId;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
 	@Override
 	public String toString() {
-		return "Order [order_id=" + order_id + ", customer_id=" + customer_id + ", customer_name=" + customer_name
-				+ "]";
+		return "Order [id=" + id + ", customerId=" + customerId + ", totalPrice=" + totalPrice + ", itemId=" + itemId
+				+ ", quantity=" + quantity + "]";
 	}
+
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(customer_id, customer_name, order_id);
-		return result;
+		return Objects.hash(customerId, id, itemId, quantity, totalPrice);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Order other = (Order) obj;
-		return Objects.equals(customer_id, other.customer_id) && Objects.equals(customer_name, other.customer_name)
-				&& Objects.equals(order_id, other.order_id);
+		return Objects.equals(customerId, other.customerId) && Objects.equals(id, other.id)
+				&& Objects.equals(itemId, other.itemId) && Objects.equals(quantity, other.quantity)
+				&& Objects.equals(totalPrice, other.totalPrice);
 	}
-	
-	
 
 }
