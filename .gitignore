@@ -6,4 +6,4 @@ bin/
 *.log
 .metadata
 .tmp
-
+log-file.log
