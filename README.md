@@ -1,68 +1,79 @@
 Coverage: 34%
 # Project Title
 
-One Paragraph of project description goes here
+Inventory Management System written in Java. In this application a user can create customers, items and orders with full create, read, update and delete operations.
+The system accepts orders with an item id and calculate the total cost of that order. This then can be read from the database later, update or even deleted.
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+Please use this link to clone the app https://github.com/erhnaks/IMS-22EnableMay2 .
+
 ### Prerequisites
 
 What things you need to install the software and how to install them
 
-```
-Give examples
-```
+You need the following software to build and run this application;
+
+* Java JDK
+* Maven
+* Git for version control
+* Eclipse IDE 
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+1. Clone the repository from GitHub https://github.com/erhnaks/IMS-22EnableMay2 .
+2. Install it ims mvn java -jar (This will make sure the Java file executes)
+3. Open the project on Eclipse
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+Once the application is built succesfully, the application then can be used to create, read, update or delete the followings from the database;
+* Customers
+* Items
+* Orders
 
 ## Running the tests
 
-Explain how to run the automated tests for this system. Break down into which tests and what they do
+The unit and integration tests are written for the application and you may access them on src/test/java. To run the test for this application simple left click on the folder and select Run as Junit Test.
 
 ### Unit Tests 
 
-Explain what these tests test, why and how to run them
+These tests are written to test the functions of the application and its methods.
 
-```
-Give an example
-```
+Here is an example of an Unit Test
+
+	@Test
+	public void constructorWithoutId() {
+		Item item = new Item("phone", 1.99F);
+		assertNull(item.getItem_id());
+		assertNotNull(item.getItem_name());
+		assertNotNull(item.getPrice());
+	}
+
 
 ### Integration Tests 
-Explain what these tests test, why and how to run them
 
-```
-Give an example
-```
+Mockito has been used for integration tests. Here is an example of one of the mockito test that has been created;
 
-### And coding style tests
+@Test
+	public void testCreate() {
+		final String F_NAME = "barry", L_NAME = "scott";
+		final Customer created = new Customer(F_NAME, L_NAME);
 
-Explain what these tests test and why
+		Mockito.when(utils.getString()).thenReturn(F_NAME, L_NAME);
+		Mockito.when(dao.create(created)).thenReturn(created);
 
-```
-Give an example
-```
+		assertEquals(created, controller.create());
+
+		Mockito.verify(utils, Mockito.times(2)).getString();
+		Mockito.verify(dao, Mockito.times(1)).create(created);
+	}
+
+
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Maven Deployment Tool has been used to deploy this application.
 
 ## Built With
 
@@ -75,6 +86,7 @@ We use [Github](http://github.com) for versioning.
 ## Authors
 
 * **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
+* **Erhan Aksu** 
 
 ## License
 
