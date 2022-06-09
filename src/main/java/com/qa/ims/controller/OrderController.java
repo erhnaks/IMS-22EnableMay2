@@ -1,5 +1,6 @@
 package com.qa.ims.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -7,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.qa.ims.persistence.dao.OrderDAO;
 import com.qa.ims.persistence.domain.Order;
+import com.qa.ims.persistence.domain.OrderItem;
 import com.qa.ims.utils.Utils;
 
 public class OrderController implements CrudController<Order> {
@@ -40,7 +42,8 @@ public class OrderController implements CrudController<Order> {
 		Long itemId = utils.getLong();
 		LOGGER.info("Please enter a quantity:");
 		Integer quantity = utils.getInteger();
-		Order order = orderDAO.create(new Order(customerId, itemId, quantity));
+		List<OrderItem> orderItems = new ArrayList<OrderItem>();
+		Order order = orderDAO.create(new Order(customerId, itemId, quantity, orderItems));
 		LOGGER.info("Your order was created");
 		return order;
 	}
@@ -53,9 +56,11 @@ public class OrderController implements CrudController<Order> {
 		Long customerId = utils.getLong();
 		LOGGER.info("Please enter a new item ID:");
 		Long itemId = utils.getLong();
+		
 		LOGGER.info("Please enter a quantity:");
 		Integer quantity = utils.getInteger();
-		Order order = orderDAO.update(new Order(id, customerId, itemId, quantity));
+		Order order = orderDAO.update(new Order(id, customerId, null, itemId, quantity, null));
+		//List<OrderItem> orderItems = order.getOrderItems();
 		LOGGER.info("Your order has been updated");
 		return order;
 	}

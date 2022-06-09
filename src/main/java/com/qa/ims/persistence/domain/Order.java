@@ -1,5 +1,6 @@
 package com.qa.ims.persistence.domain;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Order {
@@ -9,33 +10,44 @@ public class Order {
 	private Float totalPrice;
 	private Long itemId;
 	private Integer quantity;
+	private List<OrderItem> orderItems;
 
-	public Order(Long id, Long customerId, Float totalPrice, Long itemId, Integer quantity) {
+	public Order(Long id, Long customerId, Float totalPrice, Long itemId, Integer quantity, List<OrderItem> orderItems) {
 		this.id = id;
 		this.customerId = customerId;
 		this.totalPrice = totalPrice;
 		this.itemId = itemId;
 		this.quantity = quantity;
+		this.orderItems = orderItems;
 	}
 
-	public Order(Long customerId, Long itemId, Integer quantity) {
+	public Order(Long customerId, Long itemId, Integer quantity, List<OrderItem> orderItems) {
 		this.customerId = customerId;
 		this.itemId = itemId;
 		this.quantity = quantity;
+		this.orderItems = orderItems;
 	}
 
-	public Order(Long id, Long customerId, Long itemId, Integer quantity) {
+	public Order(Long id, Long customerId, Long itemId, Integer quantity, List<OrderItem> orderItems) {
 		this.id = id;
 		this.customerId = customerId;
 		this.itemId = itemId;
 		this.quantity = quantity;
+		
+	}
+
+	public List<OrderItem> getOrderItems() {
+		return orderItems;
+	}
+
+	public void setOrderItems(List<OrderItem> orderItems) {
+		this.orderItems = orderItems;
 	}
 
 	public Order(Long id) {
-		this.id =id;
+		this.id = id;
 	}
-	
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -76,10 +88,11 @@ public class Order {
 		this.quantity = quantity;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", customerId=" + customerId + ", totalPrice=" + totalPrice + ", itemId=" + itemId
-				+ ", quantity=" + quantity + "]";
+				+ ", quantity=" + quantity + ", orderItems=" + orderItems + "]";
 	}
 
 	@Override
