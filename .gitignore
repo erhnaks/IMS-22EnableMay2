@@ -7,3 +7,4 @@ bin/
 .metadata
 .tmp
 log-file.log
+errors.log
