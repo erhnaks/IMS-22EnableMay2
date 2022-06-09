@@ -21,6 +21,11 @@ public class CustomerTest {
 		customer = new Customer(1L, "john", "smith");
 		othercust = new Customer(1L, "john", "smith");
 	}
+	
+	@Test
+	public void testEquals() {
+		EqualsVerifier.simple().forClass(Customer.class).verify();
+	}
 
 	@Test
 	public void settersTest() {
@@ -147,9 +152,6 @@ public class CustomerTest {
 		assertEquals(toString, customer.toString());
 	}
 
-	@Test
-	public void testEquals() {
-		EqualsVerifier.simple().forClass(Customer.class).verify();
-	}
+
 
 }

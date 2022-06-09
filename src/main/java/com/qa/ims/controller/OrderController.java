@@ -47,7 +47,7 @@ public class OrderController implements CrudController<Order> {
 
 	@Override
 	public Order update() {
-		LOGGER.info("Please enter the ID of the order you want like to update: ");
+		LOGGER.info("Please enter the ID of the order you want to update: ");
 		Long id = utils.getLong();
 		LOGGER.info("Please enter a new customer ID:");
 		Long customerId = utils.getLong();
