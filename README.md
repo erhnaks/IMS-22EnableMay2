@@ -1,5 +1,21 @@
-Coverage: 34%
-# Project Title
+# QA 22MayEnable2 Software Core Fundemental Project - Inventory Management System (IMS)
+
+
+## Contents:
+* [Project Brief](#Project-Brief)  
+* [Getting Started](#Getting-Started)
+* [Prerequisites](#Prerequisites)  
+* [Installing](#Installing)
+* [MySQL Database](#MySQL-Database)
+* [Project Management](#Project-Management)
+* [Tests](#Tests)
+* [Deployment](#Deployment)
+* [Versioning](#Versioning)
+* [Authors](#Authors)
+* [License](#License)
+* [Acknowledgments](#Acknowledgments)
+
+# Project Brief
 
 Inventory Management System written in Java. In this application a user can create customers, items and orders with full create, read, update and delete operations.
 The system accepts orders with an item id and calculate the total cost of that order. This then can be read from the database later, update or even deleted.
@@ -8,7 +24,7 @@ The system accepts orders with an item id and calculate the total cost of that o
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-Please use this link to clone the app https://github.com/erhnaks/IMS-22EnableMay2 .
+Please use this link to clone the app [Github-Link](https://github.com/erhnaks/IMS-22EnableMay2)
 
 ### Prerequisites
 
@@ -23,7 +39,7 @@ You need the following software to build and run this application;
 
 ### Installing
 
-1. Clone the repository from GitHub https://github.com/erhnaks/IMS-22EnableMay2 .
+1. Clone the repository from [Github-Link](https://github.com/erhnaks/IMS-22EnableMay2)
 2. Install it ims mvn java -jar (This will make sure the Java file executes)
 3. Open the project on Eclipse
 
@@ -31,6 +47,27 @@ Once the application is built succesfully, the application then can be used to c
 * Customers
 * Items
 * Orders
+
+
+### MySQL Database
+
+##### Initial Application ERD;
+
+![ERD1](https://user-images.githubusercontent.com/97620234/172918017-fefda8c3-0226-4495-b58e-ce296cd438a4.png)
+
+
+##### Final Application ERD;
+
+![ERD2Final](https://user-images.githubusercontent.com/97620234/172917642-07f724ea-e5a3-45cd-84ee-fe97374a809a.png)
+
+
+## Project Management
+
+Jira was used for project management including GitHub Smart commits.
+
+![JiraBoard_Image](https://user-images.githubusercontent.com/97620234/172918783-49f0a5d4-0e2e-498d-a58d-a16fc87da5b5.png)
+
+## Tests
 
 ## Running the tests
 
@@ -70,8 +107,9 @@ Mockito has been used for integration tests. Here is an example of one of the mo
 	}
 
 
+# Deployment
 
-## Deployment
+### Deployment
 
 Maven Deployment Tool has been used to deploy this application.
 
@@ -86,7 +124,7 @@ We use [Github](http://github.com) for versioning.
 ## Authors
 
 * **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
-* **Erhan Aksu** 
+* **Erhan Aksu** [Github-Link](https://github.com/erhnaks/IMS-22EnableMay2)
 
 ## License
 
