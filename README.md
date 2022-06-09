@@ -8,6 +8,7 @@
 * [Installing](#Installing)
 * [MySQL Database](#MySQL-Database)
 * [Project Management](#Project-Management)
+* [Risk Assesment](#Risk-Assesment)
 * [Tests](#Tests)
 * [Deployment](#Deployment)
 * [Versioning](#Versioning)
@@ -66,6 +67,11 @@ Once the application is built succesfully, the application then can be used to c
 Jira was used for project management including GitHub Smart commits.
 
 ![JiraBoard_Image](https://user-images.githubusercontent.com/97620234/172918783-49f0a5d4-0e2e-498d-a58d-a16fc87da5b5.png)
+
+## Risk Assesment
+
+[Risk Assesment.pdf](https://github.com/erhnaks/projectcopypizza/files/8873514/Risk.Assesment.pdf)
+
 
 ## Tests
 
