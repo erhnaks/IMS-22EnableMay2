@@ -1,6 +1,5 @@
 package com.qa.ims.persistence.domain;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Order {
@@ -10,39 +9,47 @@ public class Order {
 	private Float totalPrice;
 	private Long itemId;
 	private Integer quantity;
-	private List<OrderItem> orderItems;
+	//private List<OrderItem> orderItems;
 
-	public Order(Long id, Long customerId, Float totalPrice, Long itemId, Integer quantity, List<OrderItem> orderItems) {
+	public Order(Long id, Long customerId, Float totalPrice, Long itemId, Integer quantity){
 		this.id = id;
 		this.customerId = customerId;
 		this.totalPrice = totalPrice;
 		this.itemId = itemId;
 		this.quantity = quantity;
-		this.orderItems = orderItems;
+		//this.orderItems = orderItems;
 	}
 
-	public Order(Long customerId, Long itemId, Integer quantity, List<OrderItem> orderItems) {
+	public Order(Long customerId, Long itemId, Integer quantity) {
 		this.customerId = customerId;
 		this.itemId = itemId;
 		this.quantity = quantity;
-		this.orderItems = orderItems;
+		//this.orderItems = orderItems;
 	}
 
-	public Order(Long id, Long customerId, Long itemId, Integer quantity, List<OrderItem> orderItems) {
+	public Order(Long id, Long customerId, Long itemId, Integer quantity) {
 		this.id = id;
 		this.customerId = customerId;
 		this.itemId = itemId;
 		this.quantity = quantity;
 		
+<<<<<<< HEAD
 	} 
  
 	public List<OrderItem> getOrderItems() {
 		return orderItems;
 	}
-
-	public void setOrderItems(List<OrderItem> orderItems) {
-		this.orderItems = orderItems;
+=======
 	}
+
+//	public List<OrderItem> getOrderItems() {
+//		return orderItems;
+//	}
+>>>>>>> feature/Docs
+
+//	public void setOrderItems(List<OrderItem> orderItems) {
+//		this.orderItems = orderItems;
+//	}
 
 	public Order(Long id) {
 		this.id = id;
@@ -89,10 +96,12 @@ public class Order {
 	}
 
 
+	
+
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", customerId=" + customerId + ", totalPrice=" + totalPrice + ", itemId=" + itemId
-				+ ", quantity=" + quantity + ", orderItems=" + orderItems + "]";
+				+ ", quantity=" + quantity + "]";
 	}
 
 	@Override
