@@ -21,6 +21,11 @@ public class ItemDAOTest {
 		DBUtils.getInstance().init("src/test/resources/sql-schema.sql", "src/test/resources/sql-data.sql");
 	}
 
+//	@Test
+//	public void testNull() {
+//	    assertEquals(null, "null");
+//	}
+	
 	@Test
 	public void testCreate() {
 		final Item created = new Item(2L, "xxx", 1.09F);
@@ -43,7 +48,7 @@ public class ItemDAOTest {
 	@Test
 	public void testRead() {
 		final long ID = 1L;
-		assertEquals(new Item(ID, "cookie", 1.99F), DAO.read(ID));
+		assertEquals(new Item(1L, "cookie", 1.99F), DAO.read(ID));
 	}
 
 	@Test
