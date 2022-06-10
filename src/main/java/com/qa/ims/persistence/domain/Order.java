@@ -34,8 +34,8 @@ public class Order {
 		this.itemId = itemId;
 		this.quantity = quantity;
 		
-	}
-
+	} 
+ 
 	public List<OrderItem> getOrderItems() {
 		return orderItems;
 	}

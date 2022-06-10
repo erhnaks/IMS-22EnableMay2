@@ -41,7 +41,7 @@ public class OrderController implements CrudController<Order> {
 		LOGGER.info("Please enter an item ID you want to add:");
 		Long itemId = utils.getLong();
 		LOGGER.info("Please enter a quantity:");
-		Integer quantity = utils.getInteger();
+		Integer quantity = utils.getInteger(); 
 		List<OrderItem> orderItems = new ArrayList<OrderItem>();
 		Order order = orderDAO.create(new Order(customerId, itemId, quantity, orderItems));
 		LOGGER.info("Your order was created");

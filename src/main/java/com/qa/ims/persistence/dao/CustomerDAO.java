@@ -30,7 +30,7 @@ public class CustomerDAO implements Dao<Customer> {
 	 * Reads all customers from the database
 	 * 
 	 * @return A list of customers
-	 */
+	 */ 
 	@Override
 	public List<Customer> readAll() {
 		try (Connection connection = DBUtils.getInstance().getConnection();

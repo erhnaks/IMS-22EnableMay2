@@ -20,7 +20,7 @@ public enum Domain {
 
 	public String getDescription() {
 		return this.name() + ": " + this.description;
-	}
+	} 
 
 	public static void printDomains() {
 		for (Domain domain : Domain.values()) {

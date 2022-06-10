@@ -37,7 +37,7 @@ public class ItemDAO implements Dao<Item> {
 			while (resultSet.next()) {
 				items.add(modelFromResultSet(resultSet));
 			}
-			return items;
+			return items; 
 		} catch (SQLException e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());

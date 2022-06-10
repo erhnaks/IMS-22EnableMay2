@@ -25,7 +25,7 @@ public class OrderDAO implements Dao<Order> {
 		Long itemId = resultSet.getLong("item_Id");
 		Integer quantity = resultSet.getInt("quantity");
 		return new Order(customerId, itemId, quantity, null);
-	}
+	} 
 
 	@Override
 	public ArrayList<Order> readAll() {
