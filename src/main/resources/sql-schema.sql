@@ -1,4 +1,4 @@
-drop schema ims;
+drop schema ims; 
 
 CREATE SCHEMA IF NOT EXISTS `ims`;
 
@@ -11,23 +11,23 @@ CREATE TABLE IF NOT EXISTS `ims`.`customers` (
     PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS items (
+CREATE TABLE IF NOT EXISTS `ims`.`items` (
    `item_id` INT AUTO_INCREMENT,
     `item_name` VARCHAR(40) DEFAULT NULL,
-    `price` FLOAT(10,2),
+    `price` FLOAT,
     PRIMARY KEY (`item_id`)
 );
 
-CREATE TABLE IF NOT EXISTS orders (
+CREATE TABLE IF NOT EXISTS `ims`.`orders` (
 `id` INT AUTO_INCREMENT,
 `customer_id` INT,
-total_price double(10,2),
+total_price double,
 quantity INt,
 PRIMARY KEY (`id`),
 FOREIGN KEY(`customer_id`) REFERENCES customers(id)
 );
 
-CREATE TABLE IF NOT EXISTS order_items (
+CREATE TABLE IF NOT EXISTS `ims`.`order_items` (
 id INT AUTO_INCREMENT,
 item_id INT,
 order_id INT,

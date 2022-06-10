@@ -6,13 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.qa.ims.persistence.domain.Order;
-import com.qa.ims.persistence.domain.OrderItem;
 import com.qa.ims.utils.DBUtils;
 
 public class OrderDAO implements Dao<Order> {
@@ -24,7 +21,7 @@ public class OrderDAO implements Dao<Order> {
 		Long customerId = resultSet.getLong("customerId");
 		Long itemId = resultSet.getLong("item_Id");
 		Integer quantity = resultSet.getInt("quantity");
-		return new Order(customerId, itemId, quantity, null);
+		return new Order(customerId, itemId, quantity);
 	}
 
 	@Override
@@ -40,10 +37,10 @@ public class OrderDAO implements Dao<Order> {
 				Float totalPrice = resultSet.getFloat("total_price");
 				Long itemId = resultSet.getLong("item_id");
 				Integer quantity = resultSet.getInt("quantity");
-				List<OrderItem> orderItems = new ArrayList<OrderItem>();
+				
 			
 				
-				Order order = new Order(id, customerId, totalPrice, itemId, quantity, orderItems);
+				Order order = new Order(id, customerId, totalPrice, itemId, quantity);
 				orders.add(order);
 			}
 		} catch (Exception e) {
