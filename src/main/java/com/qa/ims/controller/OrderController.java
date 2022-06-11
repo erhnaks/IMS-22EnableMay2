@@ -40,6 +40,7 @@ public class OrderController implements CrudController<Order> {
 		Long itemId = utils.getLong();
 		LOGGER.info("Please enter a quantity:");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		Integer quantity = utils.getInteger(); 
 		List<OrderItem> orderItems = new ArrayList<OrderItem>();
 		Order order = orderDAO.create(new Order(customerId, itemId, quantity, orderItems));
@@ -48,23 +49,33 @@ public class OrderController implements CrudController<Order> {
 		// List<OrderItem> orderItems = new ArrayList<OrderItem>();
 		Order order = orderDAO.create(new Order(customerId, itemId, quantity));
 >>>>>>> feature/Docs
+=======
+		Integer quantity = utils.getInteger();
+		Order order = orderDAO.create(new Order(customerId, itemId, quantity));
+>>>>>>> feature/testing
 		LOGGER.info("Your order was created");
 		return order;
 	}
 
 	@Override
-	public Order update() {
+	public Order update() { 
 		LOGGER.info("Please enter the ID of the order you want to update: ");
 		Long id = utils.getLong();
 		LOGGER.info("Please enter a new customer ID:");
 		Long customerId = utils.getLong();
 		LOGGER.info("Please enter a new item ID:");
 		Long itemId = utils.getLong();
+<<<<<<< HEAD
 
 		LOGGER.info("Please enter a quantity:");
 		Integer quantity = utils.getInteger();
 		Order order = orderDAO.update(new Order(id, customerId, itemId, quantity));
 
+=======
+		LOGGER.info("Please enter a quantity:");
+		Integer quantity = utils.getInteger();
+		Order order = orderDAO.update(new Order(id, customerId, itemId, quantity));
+>>>>>>> feature/testing
 		LOGGER.info("Your order has been updated");
 		return order;
 	}

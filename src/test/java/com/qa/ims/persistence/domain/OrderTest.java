@@ -1,15 +1,16 @@
-
 package com.qa.ims.persistence.domain;
 
 import org.junit.Test;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
 
-public class ItemTest {
+public class OrderTest {
 
+	
 	@Test
 	public void testEquals() {
-		EqualsVerifier.simple().forClass(Item.class).verify();
+		EqualsVerifier.simple().forClass(Order.class).verify();
 	}
-
+	
+	
 }

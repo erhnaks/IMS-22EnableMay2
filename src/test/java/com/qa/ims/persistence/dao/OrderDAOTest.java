@@ -1,7 +1,6 @@
 package com.qa.ims.persistence.dao;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +8,12 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.qa.ims.persistence.domain.Item;
+import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.utils.DBUtils;
 
-public class ItemDAOTest {
+public class OrderDAOTest {
 
-	private final ItemDAO DAO = new ItemDAO();
+	private final OrderDAO DAO = new OrderDAO();
 
 	@Before
 	public void setup() {
@@ -24,41 +23,31 @@ public class ItemDAOTest {
 
 	@Test
 	public void testCreate() {
-		final Item created = new Item(2L, "xxx", 1.09F);
+		final Order created = new Order(1L, 1L, 1);
 		assertEquals(created, DAO.create(created));
 	}
 
 	@Test
-	public void testCreateException() {
-		final Item created1 = new Item(2L, "xxx", 1.09F);
-		assertEquals(created1, DAO.create(created1));
-
-		final Item created2 = new Item(2L, "xxx", 1.09F);
-		assertNotEquals(created2, DAO.create(created2));
-	}
-
-	@Test
 	public void testReadAll() {
-		List<Item> expected = new ArrayList<>();
-		expected.add(new Item(1L, "cookie", 1.99F));
+		List<Order> expected = new ArrayList<>();
+		expected.add(new Order(1L, 1L, 1.99F, 1L, 1));
 		assertEquals(expected, DAO.readAll());
-
 	}
 
 	@Test
 	public void testReadLatest() {
-		assertEquals(new Item(1L, "cookie", 1.99f), DAO.readLatest());
+		assertEquals(new Order(1L, 1L, 1.99F, 1), DAO.readLatest());
 	}
 
 	@Test
 	public void testRead() {
 		final long ID = 1L;
-		assertEquals(new Item(1L, "cookie", 1.99F), DAO.read(ID));
+		assertEquals(new Order(1L, 1.99F, 1), DAO.read(ID));
 	}
 
 	@Test
 	public void testUpdate() {
-		final Item updated = new Item(1L, "crips", 1.49F);
+		final Order updated = new Order(1L, 1L, 2);
 		assertEquals(updated, DAO.update(updated));
 
 	}

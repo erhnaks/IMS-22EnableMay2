@@ -9,14 +9,20 @@ public class Order {
 	private Float totalPrice;
 	private Long itemId;
 	private Integer quantity;
+<<<<<<< HEAD
 	//private List<OrderItem> orderItems;
 
 	public Order(Long id, Long customerId, Float totalPrice, Long itemId, Integer quantity){
+=======
+
+	public Order(Long id, Long customerId, Float totalPrice, Long itemId, Integer quantity) {
+>>>>>>> feature/testing
 		this.id = id;
 		this.customerId = customerId;
 		this.totalPrice = totalPrice;
 		this.itemId = itemId;
 		this.quantity = quantity;
+<<<<<<< HEAD
 		//this.orderItems = orderItems;
 	}
 
@@ -27,11 +33,39 @@ public class Order {
 		//this.orderItems = orderItems;
 	}
 
+=======
+
+	}
+	
+	public Order(Long id, Long customerId, Float totalPrice, Integer quantity) {
+		this.id = id;
+		this.customerId = customerId;
+		this.totalPrice = totalPrice;
+		this.quantity = quantity;
+
+	}
+	
+	public Order( Long customerId, Float totalPrice, Integer quantity) {
+		
+		this.customerId = customerId;
+		this.totalPrice = totalPrice;
+		this.quantity = quantity;
+
+	}
+
+	public Order(Long customerId, Long itemId, Integer quantity) { 
+		this.customerId = customerId;		
+		this.itemId = itemId;
+		this.quantity = quantity;
+	}
+	
+>>>>>>> feature/testing
 	public Order(Long id, Long customerId, Long itemId, Integer quantity) {
 		this.id = id;
 		this.customerId = customerId;
 		this.itemId = itemId;
 		this.quantity = quantity;
+<<<<<<< HEAD
 		
 <<<<<<< HEAD
 	} 
@@ -40,6 +74,9 @@ public class Order {
 		return orderItems;
 	}
 =======
+=======
+
+>>>>>>> feature/testing
 	}
 
 //	public List<OrderItem> getOrderItems() {
@@ -54,6 +91,7 @@ public class Order {
 	public Order(Long id) {
 		this.id = id;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -95,9 +133,12 @@ public class Order {
 		this.quantity = quantity;
 	}
 
+<<<<<<< HEAD
 
 	
 
+=======
+>>>>>>> feature/testing
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", customerId=" + customerId + ", totalPrice=" + totalPrice + ", itemId=" + itemId

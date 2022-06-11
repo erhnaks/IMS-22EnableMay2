@@ -18,35 +18,43 @@ public class OrderDAO implements Dao<Order> {
 
 	@Override
 	public Order modelFromResultSet(ResultSet resultSet) throws SQLException {
-		Long customerId = resultSet.getLong("customerId");
-		Long itemId = resultSet.getLong("item_Id");
+		Long customerId = resultSet.getLong("customer_id");
+		Float totalPrice = resultSet.getFloat("total_price");
 		Integer quantity = resultSet.getInt("quantity");
+<<<<<<< HEAD
 <<<<<<< HEAD
 		return new Order(customerId, itemId, quantity, null);
 	} 
 =======
 		return new Order(customerId, itemId, quantity);
+=======
+		return new Order(customerId, totalPrice, quantity);
+>>>>>>> feature/testing
 	}
 >>>>>>> feature/Docs
 
 	@Override
-	public ArrayList<Order> readAll() {
+	public List<Order> readAll() {
 		ArrayList<Order> orders = new ArrayList<Order>();
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement
-						.executeQuery("select * from orders join order_items on orders.id=order_items.order_id");) {
+				ResultSet resultSet = statement.executeQuery("select * from orders join order_items on orders.id=order_items.order_id;");) {
 			while (resultSet.next()) {
 				Long id = resultSet.getLong("id");
 				Long customerId = resultSet.getLong("customer_id");
 				Float totalPrice = resultSet.getFloat("total_price");
 				Long itemId = resultSet.getLong("item_id");
 				Integer quantity = resultSet.getInt("quantity");
+<<<<<<< HEAD
 				
 			
 				
 				Order order = new Order(id, customerId, totalPrice, itemId, quantity);
 				orders.add(order);
+=======
+				Order order = new Order(id, customerId, totalPrice, itemId, quantity);
+				orders.add(order); 
+>>>>>>> feature/testing
 			}
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -57,7 +65,11 @@ public class OrderDAO implements Dao<Order> {
 
 	Order latestOrder(ResultSet resultSet) throws SQLException {
 		Long id = resultSet.getLong("id");
-		return new Order(id);
+		Long customerId = resultSet.getLong("customer_id");		
+		Float totalPrice = resultSet.getFloat("total_price");	
+		Integer quantity = resultSet.getInt("quantity");
+		Order order = new Order(id, customerId, totalPrice, quantity);
+		return order;
 	}
 
 	public Order readLatest() {
@@ -105,7 +117,6 @@ public class OrderDAO implements Dao<Order> {
 			LOGGER.error(e.getMessage());
 		}
 		return null;
-
 	}
 
 	@Override
@@ -131,8 +142,9 @@ public class OrderDAO implements Dao<Order> {
 	public int delete(long id) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("delete from order_items where order_id=" + id);
+			int count = statement.executeUpdate("delete from order_items where order_id=" + id);
 			statement.executeUpdate("delete from orders where id= " + id);
+			return count;
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
