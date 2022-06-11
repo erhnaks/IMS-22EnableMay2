@@ -47,14 +47,13 @@ public class OrderController implements CrudController<Order> {
 	}
 
 	@Override
-	public Order update() {
+	public Order update() { 
 		LOGGER.info("Please enter the ID of the order you want to update: ");
 		Long id = utils.getLong();
 		LOGGER.info("Please enter a new customer ID:");
 		Long customerId = utils.getLong();
 		LOGGER.info("Please enter a new item ID:");
 		Long itemId = utils.getLong();
-
 		LOGGER.info("Please enter a quantity:");
 		Integer quantity = utils.getInteger();
 		Order order = orderDAO.update(new Order(id, customerId, itemId, quantity));

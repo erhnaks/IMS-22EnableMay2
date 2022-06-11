@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,14 +20,14 @@ public class OrderDAO implements Dao<Order> {
 
 	@Override
 	public Order modelFromResultSet(ResultSet resultSet) throws SQLException {
-		Long customerId = resultSet.getLong("customerId");
-		Long itemId = resultSet.getLong("item_Id");
+		Long customerId = resultSet.getLong("customer_id");
+		Float totalPrice = resultSet.getFloat("total_price");
 		Integer quantity = resultSet.getInt("quantity");
-		return new Order(customerId, itemId, quantity);
+		return new Order(customerId, totalPrice, quantity);
 	}
 
 	@Override
-	public ArrayList<Order> readAll() {
+	public List<Order> readAll() {
 		ArrayList<Order> orders = new ArrayList<Order>();
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
@@ -51,7 +53,12 @@ public class OrderDAO implements Dao<Order> {
 
 	Order latestOrder(ResultSet resultSet) throws SQLException {
 		Long id = resultSet.getLong("id");
-		return new Order(id);
+		Long customerId = resultSet.getLong("customer_id");
+		// Float totalPrice = resultSet.getFloat("total_price");
+		// Long itemId = resultSet.getLong("item_id");
+		Integer quantity = resultSet.getInt("quantity");
+		Order order = new Order(id, customerId, quantity);
+		return order;
 	}
 
 	public Order readLatest() {
@@ -125,8 +132,9 @@ public class OrderDAO implements Dao<Order> {
 	public int delete(long id) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("delete from order_items where order_id=" + id);
+			int count = statement.executeUpdate("delete from order_items where order_id=" + id);
 			statement.executeUpdate("delete from orders where id= " + id);
+			return count;
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());

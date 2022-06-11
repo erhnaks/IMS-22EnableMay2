@@ -38,13 +38,13 @@ PRIMARY KEY (`id`),
 FOREIGN KEY(`customer_id`) REFERENCES customers(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS order_items (
-id INT AUTO_INCREMENT,
-item_id INT,
-order_id INT,
-PRIMARY KEY (id),
-FOREIGN KEY (order_id) REFERENCES orders(id ON DELETE CASCADE),
-FOREIGN KEY (item_id) REFERENCES items(item_id) ON DELETE CASCADE
+CREATE TABLE IF NOT EXISTS `order_items` (
+`id` INT AUTO_INCREMENT,
+`item_id` INT,
+`order_id` INT,
+PRIMARY KEY (`id`),
+FOREIGN KEY (`order_id`) REFERENCES orders(id) ON DELETE CASCADE,
+FOREIGN KEY (`item_id`) REFERENCES items(item_id) ON DELETE CASCADE
 );
 
 
