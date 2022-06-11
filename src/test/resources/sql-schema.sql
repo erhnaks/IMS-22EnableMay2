@@ -29,7 +29,7 @@ PRIMARY KEY (`item_id`)
 
 
 
-CREATE TABLE IF NOT EXISTS orders (
+CREATE TABLE IF NOT EXISTS `orders` (
 `id` INT AUTO_INCREMENT,
 `customer_id` INT,
 total_price double,
@@ -37,8 +37,6 @@ quantity INt,
 PRIMARY KEY (`id`),
 FOREIGN KEY(`customer_id`) REFERENCES customers(id) ON DELETE CASCADE
 );
-
-
 
 CREATE TABLE IF NOT EXISTS order_items (
 id INT AUTO_INCREMENT,
@@ -48,6 +46,8 @@ PRIMARY KEY (id),
 FOREIGN KEY (order_id) REFERENCES orders(id ON DELETE CASCADE),
 FOREIGN KEY (item_id) REFERENCES items(item_id) ON DELETE CASCADE
 );
+
+
 
 
 

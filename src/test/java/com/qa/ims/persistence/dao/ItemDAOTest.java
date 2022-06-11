@@ -21,10 +21,7 @@ public class ItemDAOTest {
 		DBUtils.getInstance().init("src/test/resources/sql-schema.sql", "src/test/resources/sql-data.sql");
 	}
 
-//	@Test
-//	public void testNull() {
-//	    assertEquals(null, "null");
-//	}
+
 	
 	@Test
 	public void testCreate() {
