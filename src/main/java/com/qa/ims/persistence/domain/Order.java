@@ -19,6 +19,14 @@ public class Order {
 
 	}
 	
+	public Order(Long id, Long customerId, Float totalPrice, Integer quantity) {
+		this.id = id;
+		this.customerId = customerId;
+		this.totalPrice = totalPrice;
+		this.quantity = quantity;
+
+	}
+	
 	public Order( Long customerId, Float totalPrice, Integer quantity) {
 		
 		this.customerId = customerId;
@@ -27,13 +35,12 @@ public class Order {
 
 	}
 
-	public Order(Long customerId, Long itemId, Integer quantity) {
-		this.customerId = customerId;
+	public Order(Long customerId, Long itemId, Integer quantity) { 
+		this.customerId = customerId;		
 		this.itemId = itemId;
 		this.quantity = quantity;
-
 	}
-
+	
 	public Order(Long id, Long customerId, Long itemId, Integer quantity) {
 		this.id = id;
 		this.customerId = customerId;

@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.qa.ims.persistence.domain.Customer;
 import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.utils.DBUtils;
 
@@ -37,28 +36,25 @@ public class OrderDAOTest {
 
 	@Test
 	public void testReadLatest() {
-		assertEquals(new Order(1L, 1L, 1), DAO.readLatest());
-	} 
-	
+		assertEquals(new Order(1L, 1L, 1.99F, 1), DAO.readLatest());
+	}
+
 	@Test
 	public void testRead() {
 		final long ID = 1L;
 		assertEquals(new Order(1L, 1.99F, 1), DAO.read(ID));
 	}
-	
+
 	@Test
 	public void testUpdate() {
 		final Order updated = new Order(1L, 1L, 2);
 		assertEquals(updated, DAO.update(updated));
 
 	}
-	
-	
+
 	@Test
 	public void testDelete() {
 		assertEquals(1, DAO.delete(1));
 	}
-	
-	
-	
+
 }

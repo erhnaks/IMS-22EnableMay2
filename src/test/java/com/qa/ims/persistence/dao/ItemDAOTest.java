@@ -1,6 +1,7 @@
 package com.qa.ims.persistence.dao;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +22,19 @@ public class ItemDAOTest {
 		DBUtils.getInstance().init("src/test/resources/sql-schema.sql", "src/test/resources/sql-data.sql");
 	}
 
-
-	
 	@Test
 	public void testCreate() {
 		final Item created = new Item(2L, "xxx", 1.09F);
 		assertEquals(created, DAO.create(created));
+	}
+
+	@Test
+	public void testCreateException() {
+		final Item created1 = new Item(2L, "xxx", 1.09F);
+		assertEquals(created1, DAO.create(created1));
+
+		final Item created2 = new Item(2L, "xxx", 1.09F);
+		assertNotEquals(created2, DAO.create(created2));
 	}
 
 	@Test

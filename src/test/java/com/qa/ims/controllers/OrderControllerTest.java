@@ -29,9 +29,7 @@ public class OrderControllerTest {
 
 	@InjectMocks
 	private OrderController controller;
-	
-	
-	
+
 	@Test
 	public void testCreate() {
 		final Long customerId = 1L, itemId = 1L;
@@ -48,8 +46,7 @@ public class OrderControllerTest {
 		Mockito.verify(utils, Mockito.times(1)).getInteger();
 		Mockito.verify(dao, Mockito.times(1)).create(created);
 	}
-	
-	
+
 	@Test
 	public void testReadAll() {
 		List<Order> orders = new ArrayList<>();
@@ -62,36 +59,32 @@ public class OrderControllerTest {
 		Mockito.verify(dao, Mockito.times(1)).readAll();
 	}
 
-
 	@Test
 	public void testUpdate() {
-		Order updated = new Order(1L, 1L, 1);
-		
-		//Mockito.when(this.utils.getLong()).thenReturn(1L);
+		Order updated = new Order(1L, 1L, 1L, 1);
+
 		Mockito.when(this.utils.getLong()).thenReturn(1L, updated.getCustomerId(), updated.getItemId());
-		//Mockito.when(this.utils.getFloat()).thenReturn(1.99F);
 		Mockito.when(this.utils.getInteger()).thenReturn(1);
 		Mockito.when(this.dao.update(updated)).thenReturn(updated);
 
 		assertEquals(updated, this.controller.update());
 
 		Mockito.verify(this.utils, Mockito.times(3)).getLong();
-		//Mockito.verify(this.utils, Mockito.times(1)).getFloat();
 		Mockito.verify(this.utils, Mockito.times(1)).getInteger();
 		Mockito.verify(this.dao, Mockito.times(1)).update(updated);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	@Test
+	public void testDelete() {
+		final long ID = 1L;
+
+		Mockito.when(utils.getLong()).thenReturn(ID);
+		Mockito.when(dao.delete(ID)).thenReturn(1);
+
+		assertEquals(1L, this.controller.delete());
+
+		Mockito.verify(utils, Mockito.times(1)).getLong();
+		Mockito.verify(dao, Mockito.times(1)).delete(ID);
+	}
+
 }
