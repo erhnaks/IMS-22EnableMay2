@@ -118,5 +118,4 @@ public class Order {
 				&& Objects.equals(itemId, other.itemId) && Objects.equals(quantity, other.quantity)
 				&& Objects.equals(totalPrice, other.totalPrice);
 	}
-
 }
