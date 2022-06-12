@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,17 +23,8 @@ public class OrderDAO implements Dao<Order> {
 		Long customerId = resultSet.getLong("customer_id");
 		Float totalPrice = resultSet.getFloat("total_price");
 		Integer quantity = resultSet.getInt("quantity");
-<<<<<<< HEAD
-<<<<<<< HEAD
-		return new Order(customerId, itemId, quantity, null);
-	} 
-=======
-		return new Order(customerId, itemId, quantity);
-=======
 		return new Order(customerId, totalPrice, quantity);
->>>>>>> feature/testing
 	}
->>>>>>> feature/Docs
 
 	@Override
 	public List<Order> readAll() {
@@ -45,16 +38,8 @@ public class OrderDAO implements Dao<Order> {
 				Float totalPrice = resultSet.getFloat("total_price");
 				Long itemId = resultSet.getLong("item_id");
 				Integer quantity = resultSet.getInt("quantity");
-<<<<<<< HEAD
-				
-			
-				
-				Order order = new Order(id, customerId, totalPrice, itemId, quantity);
-				orders.add(order);
-=======
 				Order order = new Order(id, customerId, totalPrice, itemId, quantity);
 				orders.add(order); 
->>>>>>> feature/testing
 			}
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -126,7 +111,7 @@ public class OrderDAO implements Dao<Order> {
 			statement.executeUpdate(
 					"update order_items set item_id=" + order.getItemId() + " where order_id=" + order.getId());
 			statement.executeUpdate("update orders set customer_id= " + order.getCustomerId()
-					+ ", total_price=(select sum(price) as Order_Cost from (select item_id "
+					+ ", total_price=(select sum(price)*quantity as Order_Cost from (select item_id "
 					+ "from order_items where order_id =" + order.getId()
 					+ ") as items_in_order join items on items_in_order.item_id = " + "items.item_id where id="
 					+ order.getId() + "), quantity= " + order.getQuantity() + " where id= " + order.getId());
