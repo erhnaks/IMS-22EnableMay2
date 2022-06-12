@@ -46,9 +46,3 @@ PRIMARY KEY (`id`),
 FOREIGN KEY (`order_id`) REFERENCES orders(id) ON DELETE CASCADE,
 FOREIGN KEY (`item_id`) REFERENCES items(item_id) ON DELETE CASCADE
 );
-
-
-
-
-
-
