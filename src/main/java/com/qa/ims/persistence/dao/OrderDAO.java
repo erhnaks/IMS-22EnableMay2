@@ -111,7 +111,7 @@ public class OrderDAO implements Dao<Order> {
 			statement.executeUpdate(
 					"update order_items set item_id=" + order.getItemId() + " where order_id=" + order.getId());
 			statement.executeUpdate("update orders set customer_id= " + order.getCustomerId()
-					+ ", total_price=(select sum(price) as Order_Cost from (select item_id "
+					+ ", total_price=(select sum(price)*quantity as Order_Cost from (select item_id "
 					+ "from order_items where order_id =" + order.getId()
 					+ ") as items_in_order join items on items_in_order.item_id = " + "items.item_id where id="
 					+ order.getId() + "), quantity= " + order.getQuantity() + " where id= " + order.getId());
